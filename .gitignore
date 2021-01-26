@@ -1,0 +1,10 @@
+
+
+# Diretorios
+/logs
+/target
+/.classpath
+/.project
+/.settings/
+
+.factorypath
