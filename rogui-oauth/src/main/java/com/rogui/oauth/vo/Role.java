@@ -2,6 +2,7 @@ package com.rogui.oauth.vo;
 
 import java.io.Serializable;
 
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
