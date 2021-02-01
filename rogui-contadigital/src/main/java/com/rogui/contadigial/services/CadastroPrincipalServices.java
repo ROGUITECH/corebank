@@ -28,4 +28,8 @@ public class CadastroPrincipalServices {
 	public CadastroPrincipalVO update(CadastroPrincipal cadastro) {
 		return CadastroPrincipalVO.consumeDTO(repository.save(cadastro));
 	}
+	
+	public void delete(CadastroPrincipal cadastro) {
+		repository.delete(cadastro);
+	}
 }
