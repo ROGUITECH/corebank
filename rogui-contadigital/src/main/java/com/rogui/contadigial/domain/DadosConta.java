@@ -41,6 +41,7 @@ public class DadosConta implements Serializable {
 	@Column(name = "digito_verificacao", length = 1)
 	private Integer div;
 	@Column(name = "agencia", length = 6)
+	
 	private String agencia;
 	@Column(name = "status", length = 10)
 	@Enumerated(EnumType.STRING)
@@ -57,8 +58,8 @@ public class DadosConta implements Serializable {
 	@Column(name = "cpf_cnpj", length = 14)
 	private String cpfCnpj;
 
-	@OneToMany(cascade = CascadeType.ALL)
+	/*@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "nro_conta")
-	private List<CadastroPrincipal> cadastros;
+	private List<CadastroPrincipal> cadastros;*/
 
 }

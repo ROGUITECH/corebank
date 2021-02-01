@@ -13,7 +13,7 @@ public class CadastroPrincipalServices {
 	@Autowired
 	CadastroPrincipalRepository repository;
 	
-	public CadastroPrincipalVO findByNroConta(String nroConta) {
+	public CadastroPrincipal findByNroConta(String nroConta) {
 		return repository.findByNroConta(nroConta);
 	}
 	

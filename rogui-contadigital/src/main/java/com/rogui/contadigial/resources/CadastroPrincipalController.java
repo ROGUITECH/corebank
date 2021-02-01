@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.rogui.contadigial.domain.CadastroPrincipal;
 import com.rogui.contadigial.dto.CadastroPrincipalVO;
 import com.rogui.contadigial.services.CadastroPrincipalServices;
 
@@ -42,9 +43,9 @@ public class CadastroPrincipalController {
 	
 	@ApiOperation(value = "Consulta cadastro pelo número da conta")
 	@GetMapping(value = "/nroConta/{nroConta}", produces = { "application/json", "application/xml" })
-	public ResponseEntity<CadastroPrincipalVO> finByNroConta(@PathVariable ("nroConta") String nroConta){
-		CadastroPrincipalVO cpVO = cpservices.findByNroConta(nroConta);
-		return ResponseEntity.ok(cpVO);
+	public ResponseEntity<CadastroPrincipal> finByNroConta(@PathVariable ("nroConta") String nroConta){
+		CadastroPrincipal cp = cpservices.findByNroConta(nroConta);
+		return ResponseEntity.ok(cp);
 	}
 	
 	@ApiOperation(value = "Consulta cadastro pelo nome presente na base")

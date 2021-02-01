@@ -15,7 +15,7 @@ public interface CadastroPrincipalRepository extends JpaRepository<CadastroPrinc
 
 	// public CadastroPrincipal findByNroConta (DadosConta nroConta);
 	@Query("Select c from cadastro_principal c WHERE c.dadosConta.nroConta = :nroConta")
-	public CadastroPrincipalVO findByNroConta(@Param("nroConta") String nroConta);
+	public CadastroPrincipal findByNroConta(@Param("nroConta") String nroConta);
 
 	public CadastroPrincipalVO findByNome(String nome);
 

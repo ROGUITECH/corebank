@@ -2,9 +2,7 @@ package com.rogui.contadigial.dto;
 
 import java.util.Date;
 
-
 import java.util.List;
-
 import com.rogui.contadigial.domain.CadastroPrincipal;
 import com.rogui.contadigial.domain.DadosConta;
 import com.rogui.contadigial.domain.Documento;
@@ -25,36 +23,38 @@ public class CadastroPrincipalVO {
 	private Date dtNascimento;
 	private String email;
 	private DadosConta dadosConta;
-	private List<Telefone> fones;
+	/*private List<Telefone> fones;
 	private List<Endereco> enderecos;
 	private List<Documento> documentos;
-	private List<RepresentanteLegal> representantes;
+	private List<RepresentanteLegal> representantes;*/
 	
-	public static CadastroPrincipalVO consumeDTO (CadastroPrincipal cadastro) {
+	
+	public static CadastroPrincipalVO consumeDTO(CadastroPrincipal cadastro) {
 		return CadastroPrincipalVO.builder().
 				tpPessoa(cadastro.getTpPessoa()).
 				nome(cadastro.getNome()).
 				dtNascimento(cadastro.getDtNascimento()).
 				email(cadastro.getEmail()).
 				dadosConta(cadastro.getDadosConta()).
-				fones(cadastro.getFones()).
+				/*fones(cadastro.getFones()).
 				enderecos(cadastro.getEnderecos()).
 				documentos(cadastro.getDocumentos()).
-				representantes(cadastro.getRepresentantes()).
+				representantes(cadastro.getRepresentantes()).*/
 				build();
 	}
 	
-	public static CadastroPrincipal consumeEntity (CadastroPrincipalVO vo) {
+	public static CadastroPrincipal consumeEntity(CadastroPrincipalVO vo) {
 		return CadastroPrincipal.builder().
 				tpPessoa(vo.getTpPessoa()).
 				nome(vo.getNome()).
 				dtNascimento(vo.getDtNascimento()).
 				email(vo.getEmail()).
 				dadosConta(vo.getDadosConta()).
-				fones(vo.getFones()).
+				/*fones(vo.getFones()).
 				enderecos(vo.getEnderecos()).
 				documentos(vo.getDocumentos()).
-				representantes(vo.getRepresentantes()).
+				representantes(vo.getRepresentantes()).*/
 				build();
 	}
+	
 }

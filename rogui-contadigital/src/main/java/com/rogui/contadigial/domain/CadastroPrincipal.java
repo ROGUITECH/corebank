@@ -31,6 +31,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity(name = "cadastro_principal")
 public class CadastroPrincipal implements Serializable {
 
@@ -57,7 +58,7 @@ public class CadastroPrincipal implements Serializable {
 	@JoinColumn(name = "nro_conta")
 	private DadosConta dadosConta;
 
-	@OneToMany
+	/*@OneToMany
 	@JoinColumn(name = "id_cadastro")
 	private List<Telefone> fones;
 
@@ -72,6 +73,6 @@ public class CadastroPrincipal implements Serializable {
 	@OneToMany
 	@JoinColumn(name = "id_cadastro")
 	private List<RepresentanteLegal> representantes;
+	*/
 	
-
 }
