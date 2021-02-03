@@ -22,6 +22,7 @@ public class CadastroPrincipalVO {
 	private String nome;
 	private Date dtNascimento;
 	private String email;
+	private String nroConta;
 	private DadosConta dadosConta;
 	/*private List<Telefone> fones;
 	private List<Endereco> enderecos;
@@ -35,7 +36,8 @@ public class CadastroPrincipalVO {
 				nome(cadastro.getNome()).
 				dtNascimento(cadastro.getDtNascimento()).
 				email(cadastro.getEmail()).
-				dadosConta(cadastro.getDadosConta()).
+				nroConta(cadastro.getNroConta()).
+				/*dadosConta(cadastro.getDadosConta()).*/
 				/*fones(cadastro.getFones()).
 				enderecos(cadastro.getEnderecos()).
 				documentos(cadastro.getDocumentos()).
@@ -49,7 +51,8 @@ public class CadastroPrincipalVO {
 				nome(vo.getNome()).
 				dtNascimento(vo.getDtNascimento()).
 				email(vo.getEmail()).
-				dadosConta(vo.getDadosConta()).
+				nroConta(vo.getNroConta()).
+				/*dadosConta(vo.getDadosConta()).*/
 				/*fones(vo.getFones()).
 				enderecos(vo.getEnderecos()).
 				documentos(vo.getDocumentos()).

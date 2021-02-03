@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -32,6 +33,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+
 @Entity(name = "cadastro_principal")
 public class CadastroPrincipal implements Serializable {
 
@@ -53,6 +55,10 @@ public class CadastroPrincipal implements Serializable {
 	private Date dtNascimento;
 	@Column(name = "email", length = 50)
 	private String email;
+	@Column(name = "conta")
+	private String nroConta;
+	
+	
 
 	@ManyToOne
 	@JoinColumn(name = "nro_conta")

@@ -17,8 +17,10 @@ import com.rogui.contadigial.domain.CadastroPrincipal;
 import com.rogui.contadigial.dto.CadastroPrincipalVO;
 import com.rogui.contadigial.services.CadastroPrincipalServices;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
+@Api(tags = "CadastroPrincipalEndPoint")
 @RestController
 @RequestMapping("/api/v1/cadastroprincipal")
 public class CadastroPrincipalController {
@@ -48,12 +50,6 @@ public class CadastroPrincipalController {
 		return ResponseEntity.ok(cp);
 	}
 	
-	@ApiOperation(value = "Consulta cadastro pelo nome presente na base")
-	@GetMapping(value = "/nome/{nome}", produces = { "application/json", "application/xml" })
-	public ResponseEntity<CadastroPrincipalVO> findByName(@PathVariable("nome")String nome){
-		CadastroPrincipalVO cpVO = cpservices.findByNome(nome);
-		return ResponseEntity.ok(cpVO);
-	}
 	
 	@ApiOperation(value = "Atualização de dados cadastrais")
 	@PutMapping(produces = { "application/json", "application/xml"}, consumes = {
