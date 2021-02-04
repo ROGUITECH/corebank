@@ -1,5 +1,7 @@
 package com.rogui.contadigial.services;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,9 +19,6 @@ public class CadastroPrincipalServices {
 		return repository.findByNroConta(nroConta);
 	}
 	
-	public CadastroPrincipalVO findByNome(String nome) {
-		return repository.findByNome(nome);
-	}
 	
 	public CadastroPrincipalVO save(CadastroPrincipal cadastro) {
 		return CadastroPrincipalVO.consumeDTO(repository.save(cadastro));
@@ -31,5 +30,12 @@ public class CadastroPrincipalServices {
 	
 	public void delete(CadastroPrincipal cadastro) {
 		repository.delete(cadastro);
+	}
+
+
+	public Optional<CadastroPrincipal> findById(Integer id) {
+		
+		return repository.findById(id);
+	
 	}
 }

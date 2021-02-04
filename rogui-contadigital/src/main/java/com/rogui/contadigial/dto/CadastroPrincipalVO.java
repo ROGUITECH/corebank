@@ -18,11 +18,11 @@ import lombok.Data;
 @Builder
 public class CadastroPrincipalVO {
 	
+	private Integer id;
 	private EnumPessoa tpPessoa;
 	private String nome;
 	private Date dtNascimento;
 	private String email;
-	private String nroConta;
 	private DadosConta dadosConta;
 	/*private List<Telefone> fones;
 	private List<Endereco> enderecos;
@@ -32,12 +32,12 @@ public class CadastroPrincipalVO {
 	
 	public static CadastroPrincipalVO consumeDTO(CadastroPrincipal cadastro) {
 		return CadastroPrincipalVO.builder().
+				id(cadastro.getId()).
 				tpPessoa(cadastro.getTpPessoa()).
 				nome(cadastro.getNome()).
 				dtNascimento(cadastro.getDtNascimento()).
 				email(cadastro.getEmail()).
-				nroConta(cadastro.getNroConta()).
-				/*dadosConta(cadastro.getDadosConta()).*/
+				dadosConta(cadastro.getDadosConta()).
 				/*fones(cadastro.getFones()).
 				enderecos(cadastro.getEnderecos()).
 				documentos(cadastro.getDocumentos()).
@@ -47,12 +47,12 @@ public class CadastroPrincipalVO {
 	
 	public static CadastroPrincipal consumeEntity(CadastroPrincipalVO vo) {
 		return CadastroPrincipal.builder().
+				id(vo.getId()).
 				tpPessoa(vo.getTpPessoa()).
 				nome(vo.getNome()).
 				dtNascimento(vo.getDtNascimento()).
 				email(vo.getEmail()).
-				nroConta(vo.getNroConta()).
-				/*dadosConta(vo.getDadosConta()).*/
+				dadosConta(vo.getDadosConta()).
 				/*fones(vo.getFones()).
 				enderecos(vo.getEnderecos()).
 				documentos(vo.getDocumentos()).

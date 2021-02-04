@@ -1,6 +1,7 @@
 package com.rogui.contadigial.resources;
 
 import java.net.URI;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -50,12 +51,21 @@ public class CadastroPrincipalController {
 		return ResponseEntity.ok(cp);
 	}
 	
+	@ApiOperation(value = "Consulta cadastro pelo id cadastral")
+	@GetMapping(value = "/id/{id}", produces = { "application/json", "application/xml" })
+	public ResponseEntity<Optional<CadastroPrincipal>> finById(@PathVariable ("id") Integer id){
+		Optional<CadastroPrincipal> cp = cpservices.findById(id);
+		return ResponseEntity.ok(cp);
+	}
 	
 	@ApiOperation(value = "Atualização de dados cadastrais")
-	@PutMapping(produces = { "application/json", "application/xml"}, consumes = {
-			"application/json", "application/xml" })
+	@PutMapping(value = "/alteracad/id/{id}")
 	public ResponseEntity<CadastroPrincipalVO> update(@RequestBody CadastroPrincipalVO cadastro) {
+		if (cpservices.findById(cadastro.getId()).isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
 		cpservices.update(CadastroPrincipalVO.consumeEntity(cadastro));
-		return ResponseEntity.noContent().build();
+		return ResponseEntity.ok().build();
+		
 	}
 }

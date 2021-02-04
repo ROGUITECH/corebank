@@ -1,5 +1,7 @@
 package com.rogui.contadigial.repositorys;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 
@@ -16,7 +18,7 @@ public interface CadastroPrincipalRepository extends JpaRepository<CadastroPrinc
 	// public CadastroPrincipal findByNroConta (DadosConta nroConta);
 	@Query("Select c from cadastro_principal c WHERE c.dadosConta.nroConta = :nroConta")
 	public CadastroPrincipal findByNroConta(@Param("nroConta") String nroConta);
-
-	public CadastroPrincipalVO findByNome(String nome);
-
+	
+	
+	public Optional<CadastroPrincipal> findById(Integer id);
 }
