@@ -1,10 +1,12 @@
 package com.rogui.contadigial.resources;
 
 import java.net.URI;
+
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,12 +38,12 @@ public class CadastroPrincipalController {
 	public ResponseEntity<CadastroPrincipalVO> create(@RequestBody CadastroPrincipalVO cadastro) {
 		CadastroPrincipalVO cad = cpservices.save(CadastroPrincipalVO.consumeEntity(cadastro));
 
-		URI location = getUri(Long.valueOf(cad.getNome()));
+		URI location = getUri(Long.valueOf(cad.getId()));
 		return ResponseEntity.created(location).build();
 	}
 	
 	private URI getUri(Long id) {
-		return ServletUriComponentsBuilder.fromCurrentRequest().path("/{nome}").buildAndExpand(id).toUri();
+		return ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(id).toUri();
 	}	
 	
 	@ApiOperation(value = "Consulta cadastro pelo número da conta")
@@ -59,13 +61,17 @@ public class CadastroPrincipalController {
 	}
 	
 	@ApiOperation(value = "Atualização de dados cadastrais")
-	@PutMapping(value = "/alteracad/id/{id}")
-	public ResponseEntity<CadastroPrincipalVO> update(@RequestBody CadastroPrincipalVO cadastro) {
-		if (cpservices.findById(cadastro.getId()).isEmpty()) {
-			return ResponseEntity.notFound().build();
-		}
-		cpservices.update(CadastroPrincipalVO.consumeEntity(cadastro));
-		return ResponseEntity.ok().build();
-		
+	@PutMapping(value = "/{id}")
+	public String update(@PathVariable ("id") Integer id, @RequestBody CadastroPrincipal cadastro) throws Exception {
+		CadastroPrincipal cad = cpservices.update(cadastro, id);
+		return "Cadastro atualizado com sucesso!" + cad.getId();
 	}
+	
+	@ApiOperation(value = "Deleta um registro da base")
+	@DeleteMapping(value = "/{id}")
+	public String delete(@PathVariable ("id")Integer id) {
+		cpservices.delete(id);
+		return "Cadastro deletado com sucesso!";
+	}
+	
 }
