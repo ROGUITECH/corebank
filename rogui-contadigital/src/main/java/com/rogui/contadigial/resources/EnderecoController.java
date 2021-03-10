@@ -33,24 +33,11 @@ public class EnderecoController  {
 	
 	@ApiOperation(value = "Consulta endereco pelo id")
 	@GetMapping(value = "/id/{id}", produces = { "application/json", "application/xml" })
-	public ResponseEntity<Optional<Endereco>> finById(@PathVariable ("id") Long id){
-		Optional<Endereco> optionalend = endServ.findById(id);
+	public ResponseEntity<EnderecoVO> finById(@PathVariable ("id") Long id){
+		EnderecoVO optionalend = endServ.findById(id);
 		return ResponseEntity.ok(optionalend);
 	}
 	
-	@ApiOperation(value = "Consulta endereco pelo CEP")
-	@GetMapping(value = "/cep/{cep}", produces = { "application/json", "application/xml" })
-	public ResponseEntity<Optional<Endereco>> finByCep(@PathVariable ("cep")String cep){
-		Optional<Endereco> optionalend = endServ.findByCEP(cep);
-		return ResponseEntity.ok(optionalend);
-	}
-	
-	@ApiOperation(value = "Consulta endereco pela rua")
-	@GetMapping(value = "/rua/{rua}", produces = { "application/json", "application/xml" })
-	public ResponseEntity<Optional<Endereco>> finByRua(@PathVariable ("rua") String rua){
-		Optional<Endereco> optionalend = endServ.findByRua(rua);
-		return ResponseEntity.ok(optionalend);
-	}
 	
 	@ApiOperation(value = "Cadastrando endereço na Base")
 	@PostMapping(produces = { "application/json", "application/xml" }, consumes = {
@@ -69,7 +56,7 @@ public class EnderecoController  {
 	@ApiOperation(value = "Alteração de dados de endereço cadastrado")
 	@PutMapping(value = "/{id}")
 	public String update(@PathVariable ("id") Long id, @RequestBody Endereco endereco) throws Exception {
-		Endereco end = endServ.update(endereco, id);
+		EnderecoVO end = endServ.update(endereco, id);
 		return "Cadastro atualizado com sucesso!" + end.getId();
 	}
 	

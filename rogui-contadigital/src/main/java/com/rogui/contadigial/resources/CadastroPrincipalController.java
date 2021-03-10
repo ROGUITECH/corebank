@@ -2,8 +2,6 @@ package com.rogui.contadigial.resources;
 
 import java.net.URI;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -48,22 +46,22 @@ public class CadastroPrincipalController {
 	
 	@ApiOperation(value = "Consulta cadastro pelo número da conta")
 	@GetMapping(value = "/nroConta/{nroConta}", produces = { "application/json", "application/xml" })
-	public ResponseEntity<CadastroPrincipal> finByNroConta(@PathVariable ("nroConta") String nroConta){
-		CadastroPrincipal cp = cpservices.findByNroConta(nroConta);
+	public ResponseEntity<CadastroPrincipalVO> finByNroConta(@PathVariable ("nroConta") String nroConta){
+		CadastroPrincipalVO cp = cpservices.findByNroConta(nroConta);
 		return ResponseEntity.ok(cp);
 	}
 	
 	@ApiOperation(value = "Consulta cadastro pelo id cadastral")
 	@GetMapping(value = "/id/{id}", produces = { "application/json", "application/xml" })
-	public ResponseEntity<Optional<CadastroPrincipal>> finById(@PathVariable ("id") Integer id){
-		Optional<CadastroPrincipal> cp = cpservices.findById(id);
+	public ResponseEntity<CadastroPrincipalVO> finById(@PathVariable ("id") Integer id){
+		CadastroPrincipalVO cp = cpservices.findById(id);
 		return ResponseEntity.ok(cp);
 	}
 	
 	@ApiOperation(value = "Atualização de dados cadastrais")
 	@PutMapping(value = "/{id}")
 	public String update(@PathVariable ("id") Integer id, @RequestBody CadastroPrincipal cadastro) throws Exception {
-		CadastroPrincipal cad = cpservices.update(cadastro, id);
+		CadastroPrincipalVO cad = cpservices.update(cadastro, id);
 		return "Cadastro atualizado com sucesso!" + cad.getId();
 	}
 	

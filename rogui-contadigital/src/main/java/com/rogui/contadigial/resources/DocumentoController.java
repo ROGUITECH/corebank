@@ -1,7 +1,6 @@
 package com.rogui.contadigial.resources;
 
 import java.net.URI;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -32,15 +31,15 @@ public class DocumentoController {
 	
 	@ApiOperation(value = "Consulta documento cadastrado pelo id")
 	@GetMapping(value = "/id/{id}", produces = { "application/json", "application/xml" })
-	public ResponseEntity<Optional<Documento>> finById(@PathVariable ("id") Integer id){
-		Optional<Documento> optionaldcm = docServ.findById(id);
+	public ResponseEntity<DocumentoVO> finById(@PathVariable ("id") Integer id){
+		DocumentoVO optionaldcm = docServ.findById(id);
 		return ResponseEntity.ok(optionaldcm);
 	}
 	
 	@ApiOperation(value = "Consulta documento cadastrado pelo número deste")
 	@GetMapping(value = "/nroDocumento/{nro}", produces = { "application/json", "application/xml" })
-	public ResponseEntity<Optional<Documento>> findByNro(@PathVariable("nro") String nro){
-		Optional<Documento> optionaldo = docServ.findByNro("nro");
+	public ResponseEntity<DocumentoVO> findByNro(@PathVariable("nro") String nro){
+		DocumentoVO optionaldo = docServ.findByNro("nro");
 		return ResponseEntity.ok(optionaldo);
 	}
 	
@@ -61,7 +60,7 @@ public class DocumentoController {
 	@ApiOperation(value = "Alteração de dados do documento cadastrado")
 	@PutMapping(value = "/{id}")
 	public String update(@PathVariable ("id") Integer id, @RequestBody Documento doc) throws Exception {
-		Documento dcm = docServ.update(doc, id);
+		DocumentoVO dcm = docServ.update(doc, id);
 		return "Cadastro atualizado com sucesso!" + dcm.getId();
 	}
 	
